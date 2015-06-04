@@ -14,24 +14,24 @@
 	}
 
 	/* Featherlight is exported as $.featherlight.
-	   It is a function used to open a featherlight lightbox.
+		It is a function used to open a featherlight lightbox.
 
-	   [tech]
-	   Featherlight uses prototype inheritance.
-	   Each opened lightbox will have a corresponding object.
-	   That object may have some attributes that override the
-	   prototype's.
-	   Extensions created with Featherlight.extend will have their
-	   own prototype that inherits from Featherlight's prototype,
-	   thus attributes can be overriden either at the object level,
-	   or at the extension level.
-	   To create callbacks that chain themselves instead of overriding,
-	   use chainCallbacks.
-	   For those familiar with CoffeeScript, this correspond to
-	   Featherlight being a class and the Gallery being a class
-	   extending Featherlight.
-	   The chainCallbacks is used since we don't have access to
-	   CoffeeScript's `super`.
+		[tech]
+		Featherlight uses prototype inheritance.
+		Each opened lightbox will have a corresponding object.
+		That object may have some attributes that override the
+		prototype's.
+		Extensions created with Featherlight.extend will have their
+		own prototype that inherits from Featherlight's prototype,
+		thus attributes can be overriden either at the object level,
+		or at the extension level.
+		To create callbacks that chain themselves instead of overriding,
+		use chainCallbacks.
+		For those familiar with CoffeeScript, this correspond to
+		Featherlight being a class and the Gallery being a class
+		extending Featherlight.
+		The chainCallbacks is used since we don't have access to
+		CoffeeScript's `super`.
 	*/
 
 	function Featherlight($content, config) {
@@ -55,7 +55,7 @@
 		};
 
 	// structure({iframeMinHeight: 44, foo: 0}, 'iframe')
-	//   #=> {min-height: 44}
+	//	#=> {min-height: 44}
 	var structure = function(obj, prefix) {
 		var result = {},
 			regex = new RegExp('^' + prefix + '([A-Z])(.*)');
@@ -77,7 +77,7 @@
 			if (!event.isDefaultPrevented()) {
 				if (false === this[eventMap[event.type]](event)) {
 					event.preventDefault(); event.stopPropagation(); return false;
-			  }
+				}
 			}
 		});
 	};
@@ -94,33 +94,40 @@
 		constructor: Featherlight,
 		/*** defaults ***/
 		/* extend featherlight with defaults and methods */
-		namespace:    'featherlight',         /* Name of the events and css class prefix */
-		targetAttr:   'data-featherlight',    /* Attribute of the triggered element that contains the selector to the lightbox content */
-		variant:      null,                   /* Class that will be added to change look of the lightbox */
-		resetCss:     false,                  /* Reset all css */
-		background:   null,                   /* Custom DOM for the background, wrapper and the closebutton */
-		openTrigger:  'click',                /* Event that triggers the lightbox */
-		closeTrigger: 'click',                /* Event that triggers the closing of the lightbox */
-		filter:       null,                   /* Selector to filter events. Think $(...).on('click', filter, eventHandler) */
-		root:         'body',                 /* Where to append featherlights */
-		openSpeed:    250,                    /* Duration of opening animation */
-		closeSpeed:   250,                    /* Duration of closing animation */
-		closeOnClick: 'background',           /* Close lightbox on click ('background', 'anywhere' or false) */
-		closeOnEsc:   true,                   /* Close lightbox when pressing esc */
-		closeIcon:    '&#10005;',             /* Close icon */
-		loading:      '',                     /* Content to show while initial content is loading */
-		persist:      false,									/* If set, the content persist and will be shown again when opened again. 'shared' is a special value when binding multiple elements for them to share the same content */
-		otherClose:   null,                   /* Selector for alternate close buttons (e.g. "a.close") */
-		beforeOpen:   $.noop,                 /* Called before open. can return false to prevent opening of lightbox. Gets event as parameter, this contains all data */
-		beforeContent: $.noop,                /* Called when content is loaded. Gets event as parameter, this contains all data */
-		beforeClose:  $.noop,                 /* Called before close. can return false to prevent opening of lightbox. Gets event as parameter, this contains all data */
-		afterOpen:    $.noop,                 /* Called after open. Gets event as parameter, this contains all data */
-		afterContent: $.noop,                 /* Called after content is ready and has been set. Gets event as parameter, this contains all data */
-		afterClose:   $.noop,                 /* Called after close. Gets event as parameter, this contains all data */
-		onKeyUp:      $.noop,                 /* Called on key down for the frontmost featherlight */
-		onResize:     $.noop,                 /* Called after new content and when a window is resized */
-		type:         null,                   /* Specify type of lightbox. If unset, it will check for the targetAttrs value. */
-		contentFilters: ['jquery', 'image', 'html', 'ajax', 'iframe', 'text'], /* List of content filters to use to determine the content */
+		namespace:      'featherlight',         /* Name of the events and css class prefix */
+		targetAttr:     'data-featherlight',    /* Attribute of the triggered element that contains the selector to the lightbox content */
+		variant:        null,                   /* Class that will be added to change look of the lightbox */
+		resetCss:       false,                  /* Reset all css */
+		background:     null,                   /* Custom DOM for the background, wrapper and the closebutton */
+		openTrigger:    'click',                /* Event that triggers the lightbox */
+		closeTrigger:   'click',                /* Event that triggers the closing of the lightbox */
+		filter:         null,                   /* Selector to filter events. Think $(...).on('click', filter, eventHandler) */
+		root:           'body',                 /* Where to append featherlights */
+		openSpeed:      250,                    /* Duration of opening animation */
+		closeSpeed:     250,                    /* Duration of closing animation */
+		closeOnClick:   'background',           /* Close lightbox on click ('background', 'anywhere' or false) */
+		closeOnEsc:     true,                   /* Close lightbox when pressing esc */
+		closeIcon:      '&#10005;',             /* Close icon */
+		loading:        '',                     /* Content to show while initial content is loading */
+		persist:        false,                  /* If set, the content persist and will be shown again when opened again. 'shared' is a special value when binding multiple elements for them to share the same content */
+		otherClose:     null,                   /* Selector for alternate close buttons (e.g. "a.close") */
+		beforeOpen:     $.noop,                 /* Called before open. can return false to prevent opening of lightbox. Gets event as parameter, this contains all data */
+		beforeContent:  $.noop,                 /* Called when content is loaded. Gets event as parameter, this contains all data */
+		beforeClose:    $.noop,                 /* Called before close. can return false to prevent opening of lightbox. Gets event as parameter, this contains all data */
+		afterOpen:      $.noop,                 /* Called after open. Gets event as parameter, this contains all data */
+		afterContent:   $.noop,                 /* Called after content is ready and has been set. Gets event as parameter, this contains all data */
+		afterClose:     $.noop,                 /* Called after close. Gets event as parameter, this contains all data */
+		onKeyUp:        $.noop,                 /* Called on key down for the frontmost featherlight */
+		onResize:       $.noop,                 /* Called after new content and when a window is resized */
+		type:           null,                   /* Specify type of lightbox. If unset, it will check for the targetAttrs value. */
+		contentFilters: [                       /* List of content filters to use to determine the content */
+			'jquery',
+			'image',
+			'html',
+			'ajax',
+			'iframe',
+			'text'
+		],
 
 		/*** methods ***/
 		/* setup iterates over a single instance of featherlight and prepares the background and binds the events */
@@ -225,11 +232,11 @@
 			self.$instance.removeClass(self.namespace+'-loading');
 
 			/* replace content by appending to existing one before it is removed
-			   this insures that featherlight-inner remain at the same relative
-				 position to any other items added to featherlight-content */
+				this insures that featherlight-inner remain at the same relative
+				position to any other items added to featherlight-content */
 			self.$instance.find('.'+self.namespace+'-inner')
-				.not($content)                /* excluded new content, important if persisted */
-				.slice(1).remove().end()			/* In the unexpected event where there are many inner elements, remove all but the first one */
+				.not($content)                  /* excluded new content, important if persisted */
+				.slice(1).remove().end()        /* In the unexpected event where there are many inner elements, remove all but the first one */
 				.replaceWith($.contains(self.$instance[0], $content[0]) ? '' : $content);
 
 			self.$content = $content.addClass(self.namespace+'-inner');
@@ -297,11 +304,11 @@
 		},
 
 		/* Utility function to chain callbacks
-		   [Warning: guru-level]
-		   Used be extensions that want to let users specify callbacks but
-		   also need themselves to use the callbacks.
-		   The argument 'chain' has callback names as keys and function(super, event)
-		   as values. That function is meant to call `super` at some point.
+			[Warning: guru-level]
+			Used be extensions that want to let users specify callbacks but
+			also need themselves to use the callbacks.
+			The argument 'chain' has callback names as keys and function(super, event)
+			as values. That function is meant to call `super` at some point.
 		*/
 		chainCallbacks: function(chain) {
 			for (var name in chain) {
@@ -311,13 +318,13 @@
 	};
 
 	$.extend(Featherlight, {
-		id: 0,                                    /* Used to id single featherlight instances */
-		autoBind:       '[data-featherlight]',    /* Will automatically bind elements matching this selector. Clear or set before onReady */
-		defaults:       Featherlight.prototype,   /* You can access and override all defaults using $.featherlight.defaults, which is just a synonym for $.featherlight.prototype */
+		id: 0,                            /* Used to id single featherlight instances */
+		autoBind: '[data-featherlight]',  /* Will automatically bind elements matching this selector. Clear or set before onReady */
+		defaults: Featherlight.prototype, /* You can access and override all defaults using $.featherlight.defaults, which is just a synonym for $.featherlight.prototype */
 		/* Contains the logic to determine content */
 		contentFilters: {
 			jquery: {
-				regex: /^[#.]\w/,         /* Anything that starts with a class name or identifiers */
+				regex: /^[#.]\w/,       /* Anything that starts with a class name or identifiers */
 				test: function(elem)    { return elem instanceof $ && elem; },
 				process: function(elem) { return this.persist !== false ? $(elem) : $(elem).clone(true); }
 			},
@@ -340,11 +347,11 @@
 			},
 			html: {
 				regex: /^\s*<[\w!][^<]*>/, /* Anything that starts with some kind of valid tag */
-				process: function(html) { return $(html); }
+				process: function(html)    { return $(html); }
 			},
 			ajax: {
 				regex: /./,            /* At this point, any content is assumed to be an URL */
-				process: function(url)  {
+				process: function(url) {
 					var self = this,
 						deferred = $.Deferred();
 					/* we are using load so one can specify a target with: url.html #targetelement */
@@ -390,8 +397,10 @@
 					if (match) {
 						var val = this.value,
 							name = $.camelCase(match[1]);
-						if ($.inArray(name, Klass.functionAttributes) >= 0) {  /* jshint -W054 */
-							val = new Function(val);                           /* jshint +W054 */
+						/* jshint -W054 */
+						if ($.inArray(name, Klass.functionAttributes) >= 0) {
+							/* jshint +W054 */
+							val = new Function(val);
 						} else {
 							try { val = $.parseJSON(val); }
 							catch(e) {}
@@ -404,14 +413,14 @@
 		},
 
 		/* Used to create a Featherlight extension
-		   [Warning: guru-level]
-		   Creates the extension's prototype that in turn
-		   inherits Featherlight's prototype.
-		   Could be used to extend an extension too...
-		   This is pretty high level wizardy, it comes pretty much straight
-		   from CoffeeScript and won't teach you anything about Featherlight
-		   as it's not really specific to this library.
-		   My suggestion: move along and keep your sanity.
+			[Warning: guru-level]
+			Creates the extension's prototype that in turn
+			inherits Featherlight's prototype.
+			Could be used to extend an extension too...
+			This is pretty high level wizardy, it comes pretty much straight
+			from CoffeeScript and won't teach you anything about Featherlight
+			as it's not really specific to this library.
+			My suggestion: move along and keep your sanity.
 		*/
 		extend: function(child, defaults) {
 			/* Setup class hierarchy, adapted from CoffeeScript */
@@ -474,7 +483,7 @@
 		},
 
 		/* Does the auto binding on startup.
-		   Meant only to be used by Featherlight and its extensions
+			Meant only to be used by Featherlight and its extensions
 		*/
 		_onReady: function() {
 			var Klass = this;
@@ -482,8 +491,8 @@
 				/* First, bind click on document, so it will work for items added dynamically */
 				Klass.attach($(document), {filter: Klass.autoBind});
 				/* Auto bound elements with attr-featherlight-filter won't work
-				   (since we already used it to bind on document), so bind these
-				   directly. We can't easily support dynamically added element with filters */
+					(since we already used it to bind on document), so bind these
+					directly. We can't easily support dynamically added element with filters */
 				$(Klass.autoBind).filter('[data-featherlight-filter]').each(function(){
 					Klass.attach($(this));
 				});
@@ -491,7 +500,7 @@
 		},
 
 		/* Featherlight uses the onKeyUp callback to intercept the escape key.
-		   Private to Featherlight.
+			Private to Featherlight.
 		*/
 		_callbackChain: {
 			onKeyUp: function(_super, event){
