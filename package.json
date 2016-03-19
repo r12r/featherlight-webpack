@@ -57,10 +57,10 @@
 			"url": "https://raw.github.com/noelboss/featherlight/master/LICENSE"
 		}
 	],
-	"main": "Gruntfile.js",
-	"name": "featherlight",
+	"main": "index-webpack.js",
+	"name": "featherlight-webpack",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/noelboss/featherlight.git"
+		"url": "https://github.com/solsson/featherlight-webpack.git"
 	}
 }
